@@ -1,5 +1,5 @@
 # tictactoe
-A tic tac toe game
+A simple tic tac toe game (https://en.wikipedia.org/wiki/Tic-tac-toe#Rules).
 
 # Setup
 Clone the proect from this git repository and 
