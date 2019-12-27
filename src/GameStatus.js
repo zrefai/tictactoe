@@ -1,8 +1,9 @@
-import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
+import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import Icon from "react-native-vector-icons/Feather";
 
 export default class GameBoard extends React.Component {
+  //Render an icon specific to the current turn
   renderPlayerTurn(prop) {
     const xIcon = (
       <Icon style={statusStyle.iconStyle} name="x" size={60} color="red" />
@@ -16,30 +17,31 @@ export default class GameBoard extends React.Component {
       />
     );
 
-    if (prop === 'X') {
+    if (prop === "X") {
       return xIcon;
-    } else if (prop === 'O') {
+    } else if (prop === "O") {
       return oIcon;
     } else {
       return null;
     }
   }
 
+  // Render the current turn, or whether a win or tie has occurred
   gameStatus(playerTurn, status) {
-    if (status === 'Tie') {
+    if (status === "Tie") {
       return (
         <View style={statusStyle.statusContainer}>
           <Text style={statusStyle.textStyle}>Tie</Text>
         </View>
       );
-    } else if (status === 'Win') {
+    } else if (status === "Win") {
       return (
         <View style={statusStyle.statusContainer}>
           {this.renderPlayerTurn(playerTurn)}
           <Text style={statusStyle.textStyle}> Wins</Text>
         </View>
       );
-    } else if (status === 'Play') {
+    } else if (status === "Play") {
       return (
         <View style={statusStyle.statusContainer}>
           <Text style={statusStyle.textStyle}>Turn: </Text>
@@ -51,11 +53,12 @@ export default class GameBoard extends React.Component {
 
   render() {
     return (
-      <View style={{flexDirection: 'column', alignContent: 'center'}}>
+      <View style={{ flexDirection: "column", alignContent: "center" }}>
         {this.gameStatus(this.props.playerTurn, this.props.winStatus)}
         <TouchableOpacity
           style={statusStyle.buttonStyle}
-          onPress={this.props.onNewGame}>
+          onPress={this.props.onNewGame}
+        >
           <Text style={statusStyle.buttonTextStyle}>New Game</Text>
         </TouchableOpacity>
       </View>
@@ -65,40 +68,40 @@ export default class GameBoard extends React.Component {
 
 const statusStyle = StyleSheet.create({
   statusContainer: {
-    marginVertical: '2%',
-    flexDirection: 'row',
-    alignSelf: 'center',
+    marginVertical: "2%",
+    flexDirection: "row",
+    alignSelf: "center"
   },
   iconStyle: {
-    paddingTop: '2%',
-    paddingHorizontal: '1%',
-    alignSelf: 'center',
-    justifyContent: 'center',
+    paddingTop: "2%",
+    paddingHorizontal: "1%",
+    alignSelf: "center",
+    justifyContent: "center"
   },
   textStyle: {
-    paddingVertical: '4%',
-    textAlign: 'center',
-    alignSelf: 'center',
-    justifyContent: 'center',
-    fontWeight: '500',
-    fontSize: 40,
+    paddingVertical: "4%",
+    textAlign: "center",
+    alignSelf: "center",
+    justifyContent: "center",
+    fontWeight: "500",
+    fontSize: 40
   },
   buttonStyle: {
-    alignSelf: 'center',
-    marginVertical: '5%',
-    width: '50%',
-    backgroundColor: '#fff',
+    alignSelf: "center",
+    marginVertical: "5%",
+    width: "50%",
+    backgroundColor: "#fff",
     borderWidth: 2,
     borderRadius: 12,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 3},
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.8,
-    shadowRadius: 3,
+    shadowRadius: 3
   },
   buttonTextStyle: {
-    textAlign: 'center',
-    color: 'black',
+    textAlign: "center",
+    color: "black",
     fontSize: 25,
-    fontWeight: '500',
-  },
+    fontWeight: "500"
+  }
 });

@@ -1,18 +1,19 @@
-import React from 'react';
-import {Text, StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
+import React from "react";
+import { Text, StyleSheet, Dimensions, TouchableOpacity } from "react-native";
+import Icon from "react-native-vector-icons/Feather";
 
-export const deviceWidth = Dimensions.get('window').width;
-export const deviceHeight = Dimensions.get('window').height;
+export const deviceWidth = Dimensions.get("window").width;
+export const deviceHeight = Dimensions.get("window").height;
 
 export default class Tile extends React.Component {
+  // Render the icon based on what was played
   renderIcon(tag) {
     const xIcon = <Icon name="x" size={60} color="red" />;
     const oIcon = <Icon name="circle" size={60} color="blue" />;
 
-    if (tag === 'X') {
+    if (tag === "X") {
       return xIcon;
-    } else if (tag === 'O') {
+    } else if (tag === "O") {
       return oIcon;
     } else {
       return null;
@@ -23,7 +24,8 @@ export default class Tile extends React.Component {
     return (
       <TouchableOpacity
         style={tileStyles.tileStyle}
-        onPress={this.props.onPress}>
+        onPress={this.props.onPress}
+      >
         <Text style={tileStyles.textStyle}>
           {this.renderIcon(this.props.tag)}
         </Text>
@@ -36,14 +38,14 @@ const tileStyles = StyleSheet.create({
   tileStyle: {
     width: deviceWidth * 0.25,
     height: deviceWidth * 0.25,
-    justifyContent: 'center',
+    justifyContent: "center",
     borderWidth: 5,
-    borderColor: 'black',
+    borderColor: "black"
   },
 
   textStyle: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 30,
-    fontWeight: 'bold',
-  },
+    fontWeight: "bold"
+  }
 });
